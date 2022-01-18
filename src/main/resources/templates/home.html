@@ -46,7 +46,9 @@
         </div>
       </div>
       <hr>
-
+      
+		<div th:if="${msg != null}" class='alert alert-success' th:text="${msg}" role='alert'></div>
+		
       <div class="container"> 
         <h2 class="font-weight-bold text-center text-capitalize">DESTACADOS</h2>
         <hr>

@@ -26,8 +26,17 @@
     <main role="main">
       <hr>
       <div class="container"> 
+      
+      	<div class="row" sec:authorize="isAnonymous()">
+      		<div class="col-md-12" align="center">
+      			<h3>Regístrese para aplicar para esta vacante</h3>
+      			<a class="btn btn-primary" th:href="@{/signup}" role="button" title="Registrarse para aplicar para esta oferta de trabajo.">
+      				Registrarse
+      			</a>   
+      		</div>
+      	</div>
 
-        <div class="row">
+        <div class="row" sec:authorize="isAuthenticated()">
           <div class="col-md-3">            
             <img class="rounded mx-auto d-block" th:src="@{/logos/{img} (img=${vacante.imagen}) }" alt="Generic placeholder image" width="220" height="220">            
           </div>
@@ -46,7 +55,7 @@
                     <p th:utext="${vacante.detalles}" class="card-text"></p>
                   </div>
                 </div>   
-                <a class="btn btn-primary" href="#" role="button" title="Quiero aplicar para esta oferta de trabajo."><i class="fas fa-file" aria-hidden="true"></i> Aplicar</a>                            
+                <a class="btn btn-primary" th:href="@{/solicitudes/create/{idVacante} (idVacante=${vacante.id}) }" role="button" title="Quiero aplicar para esta oferta de trabajo."><i class="fas fa-file" aria-hidden="true"></i> Aplicar</a>                            
               </div>
             </div>  
           </div>
